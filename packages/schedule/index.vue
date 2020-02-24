@@ -1,7 +1,7 @@
 <!--
  * @Description: 新增v2版本
  * @LastEditors: HL
- * @LastEditTime: 2020-02-24 19:25:17
+ * @LastEditTime: 2020-02-24 20:16:32
  -->
 <template>
   <div class="schedule"
@@ -41,7 +41,7 @@
               'w96':timeArr.length / 7 == 96,
             }"
                  v-for="(item,index) in timeArr"
-                 @click.stop="_setCurrentItem(item,index)"
+                 @click.stop="(e)=>_setCurrentItem(e,item,index)"
                  :key="index"></div>
           </div>
         </div>
@@ -51,7 +51,9 @@
          v-if="showResult">
       <div class="row schedule-info-tip">
         <p>{{_isSelected()?'可拖动鼠标选择时间段':'已选择时间段'}}</p>
-        <button @click.stop="_clear">清空所有选择</button>
+        <el-button type="danger"
+                   @click.stop="_clear"
+                   size="small">清空所有选择</el-button>
       </div>
       <ul class="info-ul">
         <template v-for="(item,index) in selected">
@@ -69,7 +71,6 @@
   </div>
 </template>
 <script>
-import "./util/common.css";
 import _ from "lodash";
 import { on, off } from "./util/dom";
 import { schedlueWeek2Time, time2Schedule, schedule2Time } from "./util/util";
@@ -155,7 +156,10 @@ export default {
       top: 0,
       left: 0,
       inity: null,
-      selected: []
+      selected: [],
+      firstTime: 0,
+      lastTime: 0,
+      isClick: false
     };
   },
   methods: {
@@ -173,15 +177,20 @@ export default {
       }
     },
     // 设置当前格状态
-    _setCurrentItem(val, index) {
-      if (val == 0) {
-        this.timeArr.splice(index, 1, '1');
-      } else {
-        this.timeArr.splice(index, 1, '0');
+    _setCurrentItem(e, val, index) {
+      if (this.isClick) {
+        this.clearBubble(e);
+        if (val == 0) {
+          this.timeArr.splice(index, 1, '1');
+        } else {
+          this.timeArr.splice(index, 1, '0');
+        }
+        this.$emit('triggerTime', this.timeArr.join(''));
       }
     },
     // 鼠标按下事件
     _mouseDownHandle(e) {
+      this.firstTime = new Date().getTime();
       //  创建选框节点
       this.selectBoxDashed = document.createElement('div');
       this.selectBoxDashed.className = 'select-box-dashed';
@@ -222,19 +231,24 @@ export default {
     _mouseUpHandle(e) {
       off(document.getElementById(this.comId), 'mousemove', this._theottleMove);
       off(document.body, 'mouseup', this._mouseUpHandle);
-      let flag = this._noContainComponents(e);
-      if ((this.outCancel && !flag) || !this.outCancel) {
-        this._containItemChange();
-      }
-      if (this.selectBoxDashed) {
-        try {
-          this.selectBoxDashed.parentNode.removeChild(this.selectBoxDashed);
-        } catch (err) {
-          // console.log(err)
+      this.lastTime = new Date().getTime();
+      if ((this.lastTime - this.firstTime) < 200) {
+        this.isClick = true;
+      } else {
+        let flag = this._noContainComponents(e);
+        if ((this.outCancel && !flag) || !this.outCancel) {
+          this._containItemChange();
         }
+        if (this.selectBoxDashed) {
+          try {
+            this.selectBoxDashed.parentNode.removeChild(this.selectBoxDashed);
+          } catch (err) {
+            // console.log(err)
+          }
+        }
+        this.$emit('triggerTime', this.timeArr.join(''));
+        this.clearBubble(e);
       }
-      this.$emit('triggerTime', this.timeArr.join(''));
-      this.clearBubble(e);
     },
     // 判断dom是否在选择区内
     _containItem() {
@@ -493,31 +507,6 @@ export default {
           margin-right: 15px;
         }
       }
-    }
-    button {
-      display: inline-block;
-      line-height: 1;
-      white-space: nowrap;
-      cursor: pointer;
-      background: #fff;
-      border: 1px solid #dcdfe6;
-      color: #606266;
-      -webkit-appearance: none;
-      text-align: center;
-      box-sizing: border-box;
-      outline: none;
-      margin: 0;
-      transition: 0.1s;
-      font-weight: 500;
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
-      padding: 8px 12px;
-      font-size: 14px;
-      border-radius: 4px;
-      color: #fff;
-      background-color: #f56c6c;
-      border-color: #f56c6c;
     }
   }
 }
