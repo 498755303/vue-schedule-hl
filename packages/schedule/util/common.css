@@ -1,0 +1,468 @@
+@charset "utf-8";
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+font,
+form,
+ul,
+li,
+ol,
+dl,
+dd,
+dt {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei";
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+a:active {
+  text-decoration: none !important;
+}
+
+a:visited {
+  text-decoration: none !important;
+}
+
+a:focus {
+  text-decoration: none !important;
+}
+
+h1,
+h2,
+h3,
+i,
+th,
+caption,
+code,
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ul,
+ol,
+li,
+dt,
+dd {
+  list-style: none;
+}
+
+img,
+fieldset,
+button,
+input {
+  border: none;
+}
+
+input,
+textarea,
+button,
+img,
+select {
+  outline: none;
+}
+
+input.btn {
+  outline: none;
+}
+
+hr {
+  border: none;
+  height: 1px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  -webkit-appearance: none;
+  padding: 0;
+}
+
+table {
+  border-spacing: 0;
+}
+
+button,
+select,
+label {
+  vertical-align: middle;
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix {
+  _zoom: 1;
+}
+
+.clearfix:after {
+  content: "";
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}
+
+img[src=""] {
+  opacity: 0;
+}
+
+body {
+  background-color: #F9F9F9;
+}
+
+.showbox {
+  background-color: #fff;
+  margin: 2px 0 8px 0;
+}
+
+.income,
+.expenditure,
+.cost,
+.grossprofit,
+.costs {
+  position: relative;
+  float: left;
+  display: block;
+  padding: 20px 50px;
+}
+
+.income::after,
+.cost:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 2px;
+  height: 80%;
+  background: powderblue;
+}
+
+.detail {
+  margin-left: 20px;
+  font: 16px/199% "Microsoft YaHei";
+  color: #aeaeae;
+}
+
+.income i,
+.expenditure i,
+.cost i,
+.costs i,
+.grossprofit i {
+  display: block;
+  float: left;
+  padding: 0;
+}
+
+.income .type,
+.expenditure .type,
+.cost .type,
+.costs .type,
+.grossprofit .type {
+  height: 28px;
+  line-height: 30px;
+  margin-right: 20px;
+}
+
+.income .num,
+.expenditure .num,
+.cost .num,
+.costs .num,
+.grossprofit .num {
+  font-size: 28px;
+  line-height: 1em;
+}
+
+.income .num {
+  color: #66a6ff;
+}
+
+.expenditure .num,
+.cost .num,
+.costs .num {
+  color: #ff6600;
+}
+
+.grossprofit .num {
+  color: #3ac275;
+}
+
+.income .subtitl,
+.expenditure .subtitl,
+.costs .subtitl {
+  line-height: 40px;
+  text-align: right;
+  color: #aeaeae;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.dropactive {
+  color: skyblue;
+}
+
+.ico {
+  visibility: hidden;
+}
+
+.ico.icoactive {
+  visibility: visible;
+}
+
+.photo-showtype .el-dropdown-menu__item:focus,
+.photo-showtype .el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.photo-showtype .radio-group {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.photo-showtype .radio-group .intro {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #999999;
+  line-height: 12px;
+  display: block;
+  padding: 12px 0;
+}
+
+.photo-showtype .radio-group:first-child {
+  padding: none;
+}
+
+.photo-showtype .radio-group:last-child {
+  border-top: 1px dashed #ccc;
+}
+
+.photo-showtype .radio-group.team {
+  border-top: 0;
+}
+
+.folderdp .authorizetree {
+  max-height: 250px;
+  border-top: 1px solid #f0f0f0;
+  background-color: #f9f9f9;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* tree选择项 */
+.el-tree--highlight-current .el-tree-node.is-current > .el-tree-node__content {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.vue-contextmenu-listWrapper .context-menu-list button i {
+  padding: 4px 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+video::-internal-media-controls-download-button {
+  display: none;
+}
+
+video::-webkit-media-controls-enclosure {
+  overflow: hidden;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+
+  -khtml-user-select: none;
+  /* Konqueror */
+
+  -moz-user-select: none;
+  /* Firefox */
+
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+
+  user-select: none;
+  /* Non-prefixed version, currently
+    
+    not supported by any browser */
+}
+
+/* video::-webkit-media-controls-panel {
+      width: calc(100% + 2vw); 
+  } */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 自定义列  selectorlist.vue */
+.selector-select.el-select-dropdown__item {
+  height: auto !important;
+  padding: 0;
+}
+.selector-select .el-tree-node.is-expanded > .el-tree-node__children {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.selector-select.el-select-dropdown__item .el-tree-node__label {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+}
+/* 投放计划 */
+.create-plan .el-radio-button,
+.create-plan .el-radio-button__inner,
+.create-plan .el-checkbox-group .el-checkbox-button__inner {
+  min-width: 100px;
+}
+.create-plan .el-radio-button .el-radio-button__inner,
+.create-plan .el-checkbox-button,
+.create-plan .el-checkbox-button__inner {
+  border-radius: 0 !important;
+}
+.tool-target-creat .el-radio-button,
+.tool-target-creat .el-radio-button__inner,
+.tool-target-creat .el-checkbox-group .el-checkbox-button__inner {
+  min-width: 100px;
+}
+.tool-target-creat .el-radio-button .el-radio-button__inner,
+.tool-target-creat .el-checkbox-button,
+.tool-target-creat .el-checkbox-button__inner {
+  border-radius: 0 !important;
+}
+.box-card .tab-wrap {
+  padding: 0 20px;
+}
+body::selection {
+  background-color: #d9ecff;
+}
+
+body::selection {
+  background-color: #d9ecff;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.search-part {
+  padding-top: 30px;
+}
+.vis-hidden {
+  visibility: hidden;
+}
+.schedule * {
+  box-sizing: border-box;
+}
+.moudle-section .makecreative .el-input__suffix {
+  right: -45px;
+}
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 自定义列  selectorlist.vue */
+.selector-select.el-select-dropdown__item {
+  height: auto !important;
+  padding: 0;
+}
+.selector-select .el-tree-node.is-expanded > .el-tree-node__children {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.selector-select.el-select-dropdown__item .el-tree-node__label {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+}
+/* 投放计划 */
+.create-plan .el-radio-button,
+.create-plan .el-radio-button__inner,
+.create-plan .el-checkbox-group .el-checkbox-button__inner {
+  min-width: 100px;
+}
+.create-plan .el-radio-button .el-radio-button__inner,
+.create-plan .el-checkbox-button,
+.create-plan .el-checkbox-button__inner {
+  border-radius: 0 !important;
+}
+.tool-target-creat .el-radio-button,
+.tool-target-creat .el-radio-button__inner,
+.tool-target-creat .el-checkbox-group .el-checkbox-button__inner {
+  min-width: 100px;
+}
+.tool-target-creat .el-radio-button .el-radio-button__inner,
+.tool-target-creat .el-checkbox-button,
+.tool-target-creat .el-checkbox-button__inner {
+  border-radius: 0 !important;
+}
+.box-card .tab-wrap {
+  padding: 0 20px;
+}
+/* 滚动条的宽度 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+/* 滚动条的滑块 */
+::-webkit-scrollbar-thumb {
+  background-color: #a1a3a9;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #f3f4f5;
+  -webkit-border-radius: 3px;
+}
+.el-table--scrollable-y .el-table__body-wrapper {
+  scrollbar-color: #999999 #f2f2f2;
+  scrollbar-width: thin;
+}
